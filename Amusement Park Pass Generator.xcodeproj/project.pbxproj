@@ -54,14 +54,78 @@
 		413141991E4E39C10003C4C0 /* Amusement Park Pass Generator */ = {
 			isa = PBXGroup;
 			children = (
-				4131419A1E4E39C10003C4C0 /* AppDelegate.swift */,
-				4131419C1E4E39C10003C4C0 /* ViewController.swift */,
-				4131419E1E4E39C10003C4C0 /* Main.storyboard */,
+				413141B21E4E3B260003C4C0 /* Extensions */,
+				413141B11E4E3B220003C4C0 /* Model */,
+				413141B01E4E3B1C0003C4C0 /* View */,
+				413141AF1E4E3B150003C4C0 /* Controller */,
+				413141B31E4E3B340003C4C0 /* Storyboard */,
+				413141AE1E4E3B090003C4C0 /* Helpers */,
+				413141AD1E4E3B050003C4C0 /* Root */,
+				413141AC1E4E3AFE0003C4C0 /* Resources */,
+			);
+			path = "Amusement Park Pass Generator";
+			sourceTree = "<group>";
+		};
+		413141AC1E4E3AFE0003C4C0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				413141A11E4E39C10003C4C0 /* Assets.xcassets */,
 				413141A31E4E39C10003C4C0 /* LaunchScreen.storyboard */,
 				413141A61E4E39C10003C4C0 /* Info.plist */,
 			);
-			path = "Amusement Park Pass Generator";
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		413141AD1E4E3B050003C4C0 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				4131419A1E4E39C10003C4C0 /* AppDelegate.swift */,
+			);
+			name = Root;
+			sourceTree = "<group>";
+		};
+		413141AE1E4E3B090003C4C0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		413141AF1E4E3B150003C4C0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4131419C1E4E39C10003C4C0 /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		413141B01E4E3B1C0003C4C0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		413141B11E4E3B220003C4C0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		413141B21E4E3B260003C4C0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		413141B31E4E3B340003C4C0 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				4131419E1E4E39C10003C4C0 /* Main.storyboard */,
+			);
+			name = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

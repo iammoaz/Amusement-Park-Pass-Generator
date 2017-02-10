@@ -12,6 +12,9 @@
 		413141A01E4E39C10003C4C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4131419E1E4E39C10003C4C0 /* Main.storyboard */; };
 		413141A21E4E39C10003C4C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 413141A11E4E39C10003C4C0 /* Assets.xcassets */; };
 		413141A51E4E39C10003C4C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 413141A31E4E39C10003C4C0 /* LaunchScreen.storyboard */; };
+		413141B61E4E3F1B0003C4C0 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413141B51E4E3F1B0003C4C0 /* Area.swift */; };
+		413141B81E4E3FF60003C4C0 /* Discount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413141B71E4E3FF60003C4C0 /* Discount.swift */; };
+		413141BA1E4E410B0003C4C0 /* Ride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413141B91E4E410B0003C4C0 /* Ride.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		413141A11E4E39C10003C4C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		413141A41E4E39C10003C4C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		413141A61E4E39C10003C4C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		413141B51E4E3F1B0003C4C0 /* Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
+		413141B71E4E3FF60003C4C0 /* Discount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Discount.swift; sourceTree = "<group>"; };
+		413141B91E4E410B0003C4C0 /* Ride.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ride.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,7 @@
 		413141B11E4E3B220003C4C0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				413141B41E4E3ECD0003C4C0 /* Access Entitlements */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -126,6 +133,16 @@
 				4131419E1E4E39C10003C4C0 /* Main.storyboard */,
 			);
 			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		413141B41E4E3ECD0003C4C0 /* Access Entitlements */ = {
+			isa = PBXGroup;
+			children = (
+				413141B51E4E3F1B0003C4C0 /* Area.swift */,
+				413141B71E4E3FF60003C4C0 /* Discount.swift */,
+				413141B91E4E410B0003C4C0 /* Ride.swift */,
+			);
+			name = "Access Entitlements";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +219,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4131419D1E4E39C10003C4C0 /* ViewController.swift in Sources */,
+				413141B61E4E3F1B0003C4C0 /* Area.swift in Sources */,
+				413141B81E4E3FF60003C4C0 /* Discount.swift in Sources */,
+				413141BA1E4E410B0003C4C0 /* Ride.swift in Sources */,
 				4131419B1E4E39C10003C4C0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

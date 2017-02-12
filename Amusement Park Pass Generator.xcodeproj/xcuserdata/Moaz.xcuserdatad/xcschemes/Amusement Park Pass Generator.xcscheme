@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "413141E31E4F92050003C4C0"
+               BuildableName = "AmusementParkPassGeneratorTests.xctest"
+               BlueprintName = "AmusementParkPassGeneratorTests"
+               ReferencedContainer = "container:Amusement Park Pass Generator.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

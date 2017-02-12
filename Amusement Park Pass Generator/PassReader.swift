@@ -73,7 +73,6 @@ extension PassReader {
     }
     
     // Swipe Access Methods on different access entitlements
-    
     // Area Access
     func swipeAccessFor(_ pass: Passable, hasAccessTo area: AccessArea) -> Bool {
         let success = pass.hasAccess(toArea: area)

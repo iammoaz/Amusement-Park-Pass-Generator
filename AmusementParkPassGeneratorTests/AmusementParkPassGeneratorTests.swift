@@ -24,10 +24,6 @@ class AmusementParkPassGeneratorTests: XCTestCase {
         super.tearDown()
     }
     
-    /*  
-     Each pass has a pass id. When a pass is swiped, the id is recorded as last swiped id, along with a timestamp, so pass will not be permitted if it's swiped a another time in a row within 10 seconds)
-    */
-    
     // Classic Guest
     func testClassicGuestType() {
         let guestPass = passGenerator.createPass(forEntrant: GuestType.classic)

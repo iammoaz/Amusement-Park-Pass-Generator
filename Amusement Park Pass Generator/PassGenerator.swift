@@ -22,7 +22,6 @@ final class AccessPassGenerator {
             self.entrant = entrant
             AccessPass.currentPassID += 1
         }
-        
     }
     
     // Access to  Create Passes
@@ -44,7 +43,6 @@ final class AccessPassGenerator {
     }
     
     // Only child pass need to be age verifiable
-    
     private func pass(forVerifiableEntrant entrant: AgeVerifiable) -> AccessPass {
         let entrant = entrant as! GuestType
         

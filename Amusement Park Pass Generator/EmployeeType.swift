@@ -33,7 +33,7 @@ extension EmployeeType {
         return (employeeFoodDiscount, employeeMerchandiseDicount)
     }
     
-    var contactInformation: EntrantDetails {
+    var contactInformation: EntrantDetails? {
         switch self {
             case .foodServices(let details):
                 return details

@@ -159,6 +159,8 @@ extension PassReader {
         case .child(birthdate: let birthday):
             let isMatch = isBirthday(forPass: pass, withDate: birthday)
             return isMatch ? "Happy Birthday!" : ""
+        default:
+            return ""
         }
     }
     

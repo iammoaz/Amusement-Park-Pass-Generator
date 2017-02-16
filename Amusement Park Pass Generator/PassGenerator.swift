@@ -60,6 +60,9 @@ final class AccessPassGenerator {
             } else {
                 return AccessPass(for: GuestType.classic)
             }
+            
+        default:
+            return AccessPass(for: GuestType.classic)
         }
     }
 }

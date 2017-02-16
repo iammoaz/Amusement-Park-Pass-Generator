@@ -9,7 +9,7 @@
 import Foundation
 
 protocol Contactable {
-    var contactInformation: EntrantDetails { get }
+    var contactInformation: EntrantDetails? { get }
 }
 
 struct EntrantDetails {
@@ -33,12 +33,12 @@ struct EntrantDetails {
 // Returns Contact Details
 extension Contactable {
     var contactDetails: String {
-        let firstName = contactInformation.firstName
-        let lastName = contactInformation.lastName
-        let streetAddress = contactInformation.streetAddress
-        let city = contactInformation.city
-        let state = contactInformation.state
-        let zipCode = contactInformation.zipCode
+        let firstName = contactInformation!.firstName
+        let lastName = contactInformation!.lastName
+        let streetAddress = contactInformation!.streetAddress
+        let city = contactInformation!.city
+        let state = contactInformation!.state
+        let zipCode = contactInformation!.zipCode
         
         return "\(firstName) \(lastName) lives at \(streetAddress) in \(city) of \(state), \(zipCode)"
     }

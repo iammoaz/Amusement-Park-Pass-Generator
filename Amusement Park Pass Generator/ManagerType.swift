@@ -27,7 +27,7 @@ extension ManagerType {
         return [.amusement, .kitchen, .maintenance, .rideControl, .office]
     }
     
-    var contactInformation: EntrantDetails {
+    var contactInformation: EntrantDetails? {
         switch self {
             case .manager(let details): return details
         }

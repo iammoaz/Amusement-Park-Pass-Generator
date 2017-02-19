@@ -45,6 +45,8 @@
 		413142051E5072650003C4C0 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413142021E5051BB0003C4C0 /* Date.swift */; };
 		4192AB291E563F0900BC061F /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192AB281E563F0900BC061F /* ThemeButton.swift */; };
 		4192AB2C1E564F1200BC061F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192AB2B1E564F1200BC061F /* Theme.swift */; };
+		419E48841E59A3D40046785C /* ThemeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419E48831E59A3D40046785C /* ThemeTextField.swift */; };
+		419E48861E59C06C0046785C /* ThemeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419E48851E59C06C0046785C /* ThemeInputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		413142021E5051BB0003C4C0 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		4192AB281E563F0900BC061F /* ThemeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeButton.swift; sourceTree = "<group>"; };
 		4192AB2B1E564F1200BC061F /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		419E48831E59A3D40046785C /* ThemeTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeTextField.swift; sourceTree = "<group>"; };
+		419E48851E59C06C0046785C /* ThemeInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +292,8 @@
 			isa = PBXGroup;
 			children = (
 				4192AB281E563F0900BC061F /* ThemeButton.swift */,
+				419E48831E59A3D40046785C /* ThemeTextField.swift */,
+				419E48851E59C06C0046785C /* ThemeInputView.swift */,
 			);
 			name = Design;
 			sourceTree = "<group>";
@@ -408,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				413141D31E4F54460003C4C0 /* PassReader.swift in Sources */,
+				419E48841E59A3D40046785C /* ThemeTextField.swift in Sources */,
 				413141C01E4E61F40003C4C0 /* EntrantDetails.swift in Sources */,
 				4131419D1E4E39C10003C4C0 /* ViewController.swift in Sources */,
 				413141BD1E4E4F5A0003C4C0 /* EmployeeType.swift in Sources */,
@@ -415,6 +422,7 @@
 				413141B81E4E3FF60003C4C0 /* DiscountType.swift in Sources */,
 				413141DD1E4F630A0003C4C0 /* Entrant.swift in Sources */,
 				413141BA1E4E410B0003C4C0 /* AccessRide.swift in Sources */,
+				419E48861E59C06C0046785C /* ThemeInputView.swift in Sources */,
 				413141C21E4E645F0003C4C0 /* GuestType.swift in Sources */,
 				4192AB2C1E564F1200BC061F /* Theme.swift in Sources */,
 				413141D01E4E6F960003C4C0 /* AgeVerifiable.swift in Sources */,

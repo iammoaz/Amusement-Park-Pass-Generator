@@ -43,6 +43,8 @@
 		413142011E4FA0860003C4C0 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413141C61E4E677A0003C4C0 /* SoundManager.swift */; };
 		413142031E5051BB0003C4C0 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413142021E5051BB0003C4C0 /* Date.swift */; };
 		413142051E5072650003C4C0 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413142021E5051BB0003C4C0 /* Date.swift */; };
+		4192AB291E563F0900BC061F /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192AB281E563F0900BC061F /* ThemeButton.swift */; };
+		4192AB2C1E564F1200BC061F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192AB2B1E564F1200BC061F /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,8 @@
 		413141E61E4F92050003C4C0 /* AmusementParkPassGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmusementParkPassGeneratorTests.swift; sourceTree = "<group>"; };
 		413141E81E4F92050003C4C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		413142021E5051BB0003C4C0 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		4192AB281E563F0900BC061F /* ThemeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeButton.swift; sourceTree = "<group>"; };
+		4192AB2B1E564F1200BC061F /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,7 @@
 				413141B31E4E3B340003C4C0 /* Storyboard */,
 				413141AE1E4E3B090003C4C0 /* Helper Methods */,
 				413141AD1E4E3B050003C4C0 /* Root */,
+				4192AB261E563EDB00BC061F /* Theme */,
 				413141AC1E4E3AFE0003C4C0 /* Resources */,
 			);
 			path = "Amusement Park Pass Generator";
@@ -270,6 +275,31 @@
 			name = Date;
 			sourceTree = "<group>";
 		};
+		4192AB261E563EDB00BC061F /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				4192AB2A1E564F0400BC061F /* Global */,
+				4192AB271E563EE600BC061F /* Design */,
+			);
+			name = Theme;
+			sourceTree = "<group>";
+		};
+		4192AB271E563EE600BC061F /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				4192AB281E563F0900BC061F /* ThemeButton.swift */,
+			);
+			name = Design;
+			sourceTree = "<group>";
+		};
+		4192AB2A1E564F0400BC061F /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				4192AB2B1E564F1200BC061F /* Theme.swift */,
+			);
+			name = Global;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -386,10 +416,12 @@
 				413141DD1E4F630A0003C4C0 /* Entrant.swift in Sources */,
 				413141BA1E4E410B0003C4C0 /* AccessRide.swift in Sources */,
 				413141C21E4E645F0003C4C0 /* GuestType.swift in Sources */,
+				4192AB2C1E564F1200BC061F /* Theme.swift in Sources */,
 				413141D01E4E6F960003C4C0 /* AgeVerifiable.swift in Sources */,
 				413141C41E4E662F0003C4C0 /* ManagerType.swift in Sources */,
 				413142031E5051BB0003C4C0 /* Date.swift in Sources */,
 				4131419B1E4E39C10003C4C0 /* AppDelegate.swift in Sources */,
+				4192AB291E563F0900BC061F /* ThemeButton.swift in Sources */,
 				413141D51E4F54520003C4C0 /* PassGenerator.swift in Sources */,
 				413141D71E4F545C0003C4C0 /* Pass.swift in Sources */,
 				413141C71E4E677A0003C4C0 /* SoundManager.swift in Sources */,

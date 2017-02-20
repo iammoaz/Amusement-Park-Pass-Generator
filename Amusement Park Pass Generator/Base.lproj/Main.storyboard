@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Create Pass Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Amusement_Park_Pass_Generator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CreatePassController" customModule="Amusement_Park_Pass_Generator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -561,10 +561,10 @@
             </objects>
             <point key="canvasLocation" x="140.625" y="126.56249999999999"/>
         </scene>
-        <!--View Controller-->
+        <!--Test Pass Controller-->
         <scene sceneID="Gas-n0-3g0">
             <objects>
-                <viewController id="naJ-Kc-W36" sceneMemberID="viewController">
+                <viewController id="naJ-Kc-W36" customClass="TestPassController" customModule="Amusement_Park_Pass_Generator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YO8-FA-Qee"/>
                         <viewControllerLayoutGuide type="bottom" id="csG-gN-CbH"/>
@@ -902,7 +902,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Skb-Kt-IU9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="846.875" y="126.56249999999999"/>
+            <point key="canvasLocation" x="874" y="127"/>
         </scene>
     </scenes>
     <resources>

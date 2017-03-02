@@ -26,4 +26,11 @@ extension Date {
         
         return calendar.date(from: components)
     }
+    
+    static func getDateFromString(stringDate: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let date = dateFormatter.date(from: stringDate)
+        return date
+    }
 }

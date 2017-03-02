@@ -20,7 +20,7 @@ protocol AgeVerifiable {
 extension AgeVerifiable {
     var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "MM/dd/yyyy"
         return dateFormatter
     }
     
@@ -34,7 +34,7 @@ extension AgeVerifiable {
         let today = Date()
         
         guard let birthdate = dateFormatter.date(from: dateString) else {
-            throw PassError.invalidDateFormat(message: "Please enter date in format \"yyyy-mm-dd\"")
+            throw PassError.invalidDateFormat(message: "Please enter date in format \"MM/dd/yyyy\"")
         }
         
         // Number of seconds since give date

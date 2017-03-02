@@ -16,8 +16,9 @@ protocol Passable {
     var allRideAccess: Bool { get }
     var skipsQueues: Bool { get }
     var accessAreas: [AccessArea] { get }
-    var contactDetails: String { get }
+    var addressDetails: String { get }
     func hasAccess(toArea area: AccessArea) -> Bool
+//    func hasAccess(toDiscount for: DiscountType) -> Bool
 }
 
 enum PassError: Error {
@@ -55,27 +56,46 @@ extension AccessPassGenerator.AccessPass {
         return entrant.discounts.merchandise
     }
     
+    var name: EntrantName? {
+        switch entrant {
+        case is EmployeeType:
+            let entrant = self.entrant as! EmployeeType
+            return entrant.name
+        case is ManagerType:
+            let entrant = self.entrant as! ManagerType
+            return entrant.name
+        case is VendorType:
+            let entrant = self.entrant as! VendorType
+            return entrant.name
+        case is ContractorType:
+            let entrant = self.entrant as! ContractorType
+            return entrant.name
+        default:
+            return nil
+        }
+    }
+    
     // Optinal contact information
-    var contactInfo: EntrantDetails? {
+    var address: EntrantAddress? {
         switch entrant {
             case is EmployeeType:
                 let employeeType = entrant as! EmployeeType
-                return employeeType.contactInformation
+                return employeeType.address
             case is ManagerType:
                 let managerType = entrant as! ManagerType
-                return managerType.contactInformation
+                return managerType.address
             default:
                 return nil
         }
     }
     
-    var contactDetails: String {
-        if entrant is Contactable && entrant is EmployeeType {
+    var addressDetails: String {
+        if entrant is Addressable && entrant is EmployeeType {
             let hourlyEmployee = entrant as! EmployeeType
-            return hourlyEmployee.contactDetails
-        } else if entrant is Contactable && entrant is ManagerType {
+            return hourlyEmployee.addressDetails
+        } else if entrant is Addressable && entrant is ManagerType {
             let manager = entrant as! ManagerType
-            return manager.contactDetails
+            return manager.addressDetails
         }
         return "Entrant has no contact details"
     }
@@ -87,7 +107,7 @@ extension AccessPassGenerator.AccessPass {
         switch entrant as! GuestType {
         case .child(birthdate: let date):
             do {
-                let verified = try birthdate(dateString: date, meetsRequirement: maxChildAge)
+                let verified = try birthdate(dateString: date.dateOfBirth, meetsRequirement: maxChildAge)
                 return verified
             } catch PassError.failsChildAgeRequirement(message: let message) {
                 print(message)

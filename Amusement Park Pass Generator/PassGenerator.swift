@@ -9,7 +9,7 @@
 import Foundation
 typealias PassID = Int
 
-final class AccessPassGenerator {
+class AccessPassGenerator {
     static let instance = AccessPassGenerator()
     
     struct AccessPass: Passable, AgeVerifiable {
@@ -24,22 +24,37 @@ final class AccessPassGenerator {
         }
     }
     
+    private init() { }
+    
     // Access to  Create Passes
-    public func createPass(forEntrant entrant: Entrant) -> AccessPass {
+    public func createPass(forEntrant entrant: Entrant) -> (entrantPass: AccessPass, message: AccessMessage?) {
+        
         if entrant is AgeVerifiable {
-            return pass(forVerifiableEntrant: entrant as! AgeVerifiable)
+            return (pass(forVerifiableEntrant: entrant as! AgeVerifiable), "Success")
+        }
+        
+        if entrant is GuestType {
+            return (pass(forVerifiableEntrant: entrant as! AgeVerifiable), "Success")
         }
         
         if entrant is EmployeeType {
-            return AccessPass(for: entrant as! EmployeeType)
+            return (AccessPass(for: entrant as! EmployeeType), "Success")
         }
         
         if entrant is ManagerType {
-            return AccessPass(for: entrant as! ManagerType)
+            return (AccessPass(for: entrant as! ManagerType), "Success")
+        }
+        
+        if entrant is VendorType {
+            return (AccessPass(for: entrant as! VendorType), "Success")
+        }
+        
+        if entrant is ContractorType {
+            return (AccessPass(for: entrant as! ContractorType), "Success")
         }
         
         // Fallback - Should never get here!
-        return AccessPass(for: GuestType.classic)
+        return (AccessPass(for: GuestType.classic), nil)
     }
     
     // Only child pass need to be age verifiable
@@ -61,8 +76,12 @@ final class AccessPassGenerator {
                 return AccessPass(for: GuestType.classic)
             }
             
-        default:
-            return AccessPass(for: GuestType.classic)
+        case .senior(name: let name, birthdate: let birthdate):
+            return AccessPass(for: GuestType.senior(name: name, birthdate: birthdate))
+            
+        case .season(name: let name, address: let address, birthdate: let birthdate):
+            return AccessPass(for: GuestType.season(name: name, address: address, birthdate: birthdate))
+            
         }
     }
 }

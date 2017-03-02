@@ -201,23 +201,23 @@ extension PassReader {
         
         if pass.entrant is ContractorType {
             switch pass.entrant as! ContractorType {
-            case .oneZeroZeroOne(name: let name, address: _, birthdate: let date, socialSecurityNumber: _):
+            case ._1001(name: let name, address: _, birthdate: let date, socialSecurityNumber: _):
                 let isMatch = isBirthday(forPass: pass, withDate: date.dateOfBirth)
                 return isMatch ? "Happy Birthday \(name.firstName!)!" : ""
                 
-            case .oneZeroZeroTwo(name: let name, address: _, birthdate: let date, socialSecurityNumber: _):
+            case ._1002(name: let name, address: _, birthdate: let date, socialSecurityNumber: _):
                 let isMatch = isBirthday(forPass: pass, withDate: date.dateOfBirth)
                 return isMatch ? "Happy Birthday \(name.firstName!)!" : ""
                 
-            case .oneZeroZeroThree(name: let name, address: _, birthdate: let date, socialSecurityNumber: _):
+            case ._1003(name: let name, address: _, birthdate: let date, socialSecurityNumber: _):
                 let isMatch = isBirthday(forPass: pass, withDate: date.dateOfBirth)
                 return isMatch ? "Happy Birthday \(name.firstName!)!" : ""
                 
-            case .twoZeroZeroOne(name: let name, address: _, birthdate: let date, socialSecurityNumber: _):
+            case ._2001(name: let name, address: _, birthdate: let date, socialSecurityNumber: _):
                 let isMatch = isBirthday(forPass: pass, withDate: date.dateOfBirth)
                 return isMatch ? "Happy Birthday \(name.firstName!)!" : ""
                 
-            case .twoZeroZeroTwo(name: let name, address: _, birthdate: let date, socialSecurityNumber: _):
+            case ._2002(name: let name, address: _, birthdate: let date, socialSecurityNumber: _):
                 let isMatch = isBirthday(forPass: pass, withDate: date.dateOfBirth)
                 return isMatch ? "Happy Birthday \(name.firstName!)!" : ""
             }

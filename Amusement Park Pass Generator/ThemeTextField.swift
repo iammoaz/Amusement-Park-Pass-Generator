@@ -26,6 +26,8 @@ class ThemeTextField: UITextField {
         self.layer.backgroundColor = Theme.textFieldBackgroundColor.cgColor
         
         self.tintColor = Theme.accentColor
+        self.autocorrectionType = .no
+        self.spellCheckingType = .no
     }
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {

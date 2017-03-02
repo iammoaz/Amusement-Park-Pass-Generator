@@ -26,5 +26,4 @@ class ThemeButton: UIButton {
         self.layer.borderWidth = 2.0
         self.layer.borderColor = Theme.buttonBorderColor.cgColor
     }
-
 }

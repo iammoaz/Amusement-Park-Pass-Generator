@@ -50,6 +50,9 @@
 		416C8D531E5B1212006BA0B2 /* ContractorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416C8D521E5B1212006BA0B2 /* ContractorType.swift */; };
 		4192AB291E563F0900BC061F /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192AB281E563F0900BC061F /* ThemeButton.swift */; };
 		4192AB2C1E564F1200BC061F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192AB2B1E564F1200BC061F /* Theme.swift */; };
+		419A674B1E68C6AD0030D98F /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414A72111E64B32800A5EAFD /* Data.swift */; };
+		419A674C1E68C6B20030D98F /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413FA2D61E60A72F001573BA /* InputField.swift */; };
+		419A674D1E68C6F60030D98F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192AB2B1E564F1200BC061F /* Theme.swift */; };
 		419E48841E59A3D40046785C /* ThemeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419E48831E59A3D40046785C /* ThemeTextField.swift */; };
 		419E48861E59C06C0046785C /* ThemeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419E48851E59C06C0046785C /* ThemeInputView.swift */; };
 		41B91FD51E5E1FB90098C68A /* VendorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416C8D501E5B1202006BA0B2 /* VendorType.swift */; };
@@ -485,6 +488,8 @@
 				413141FA1E4FA0300003C4C0 /* Entrant.swift in Sources */,
 				413141F71E4FA0300003C4C0 /* EntrantDetails.swift in Sources */,
 				413141F11E4FA0290003C4C0 /* DiscountType.swift in Sources */,
+				419A674C1E68C6B20030D98F /* InputField.swift in Sources */,
+				419A674B1E68C6AD0030D98F /* Data.swift in Sources */,
 				413141F21E4FA0290003C4C0 /* AccessRide.swift in Sources */,
 				413141F01E4FA0290003C4C0 /* AccessArea.swift in Sources */,
 				413141E71E4F92050003C4C0 /* AmusementParkPassGeneratorTests.swift in Sources */,
@@ -493,6 +498,7 @@
 				413141FE1E4FA0350003C4C0 /* PassGenerator.swift in Sources */,
 				41B91FD61E5E1FBD0098C68A /* ContractorType.swift in Sources */,
 				413141FF1E4FA0350003C4C0 /* Pass.swift in Sources */,
+				419A674D1E68C6F60030D98F /* Theme.swift in Sources */,
 				413141F61E4FA02D0003C4C0 /* ManagerType.swift in Sources */,
 				413142011E4FA0860003C4C0 /* SoundManager.swift in Sources */,
 			);

@@ -12,11 +12,11 @@ class AmusementParkPassGeneratorTests: XCTestCase {
     
     let passGenerator = AccessPassGenerator.instance
     let passReader = PassReader.instance
-    let entrantName = EntrantName(firstName: "Muhammad", lastName: "Moaz")
-    let entrantAddress = EntrantAddress(streetAddress: "86", city: "Khaitan", state: "FL", zipCode: "83001")
-    let entrantBirthdate = EntrantBirthdate(dateOfBirth: "29-11-1991")
-    let entrantVisitdate = EntrantVisitDate(dateOfVisit: "21-02-2017")
-    let entrantSocialSecurityNumber = EntrantSocialSecurityNumber(socialSecurityNumber: "00000000000")
+    let entrantName = Data.name
+    let entrantAddress = Data.address
+    let entrantBirthdate = Data.birthdate
+    let entrantVisitdate = Data.visidate
+    let entrantSocialSecurityNumber = Data.socialSecurityNumber
     
     override func setUp() {
         super.setUp()
@@ -30,7 +30,7 @@ class AmusementParkPassGeneratorTests: XCTestCase {
     
     // Classic Guest
     func testClassicGuestType() {
-        let pass = passGenerator.createPass(forEntrant: GuestType.classic)
+        let pass = passGenerator.createPass(forEntrant: GuestType.classic).entrantPass
         XCTAssertTrue(pass.hasAccess(toArea: .amusement))
         XCTAssertFalse(pass.hasAccess(toArea: .kitchen))
         XCTAssertFalse(pass.hasAccess(toArea: .maintenance))
@@ -44,7 +44,7 @@ class AmusementParkPassGeneratorTests: XCTestCase {
     
     // Vip Guest
     func testVipGuestType() {
-        let pass = passGenerator.createPass(forEntrant: GuestType.vip)
+        let pass = passGenerator.createPass(forEntrant: GuestType.vip).entrantPass
         XCTAssertTrue(pass.hasAccess(toArea: .amusement))
         XCTAssertFalse(pass.hasAccess(toArea: .kitchen))
         XCTAssertFalse(pass.hasAccess(toArea: .maintenance))
@@ -59,9 +59,9 @@ class AmusementParkPassGeneratorTests: XCTestCase {
     
     // Child Guest
     func testChildGuestType() {
-        // Date Format: yyyy-mm-dd
-        let birthdate = EntrantBirthdate(dateOfBirth: "2012-11-29")
-        let childPass = passGenerator.createPass(forEntrant: GuestType.child(birthdate: birthdate))
+        // Date Format: MM/dd/yyyy
+        let birthdate = EntrantBirthdate(dateOfBirth: "11/29/2012")
+        let childPass = passGenerator.createPass(forEntrant: GuestType.child(birthdate: birthdate)).entrantPass
         XCTAssertTrue(childPass.hasAccess(toArea: .amusement))
         XCTAssertFalse(childPass.hasAccess(toArea: .kitchen))
         XCTAssertFalse(childPass.hasAccess(toArea: .maintenance))
@@ -77,7 +77,7 @@ class AmusementParkPassGeneratorTests: XCTestCase {
     
     // Food Services
     func testFoodServicesEmployeeType() {
-        let pass = passGenerator.createPass(forEntrant: EmployeeType.foodServices(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber))
+        let pass = passGenerator.createPass(forEntrant: EmployeeType.foodServices(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber)).entrantPass
         
         
         XCTAssertTrue(pass.hasAccess(toArea: .amusement))
@@ -94,7 +94,7 @@ class AmusementParkPassGeneratorTests: XCTestCase {
     
     // Ride Services
     func testRideServicesEmployeeType() {
-        let pass = passGenerator.createPass(forEntrant: EmployeeType.rideServices(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber))
+        let pass = passGenerator.createPass(forEntrant: EmployeeType.rideServices(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber)).entrantPass
         
         
         XCTAssertTrue(pass.hasAccess(toArea: .amusement))
@@ -111,7 +111,7 @@ class AmusementParkPassGeneratorTests: XCTestCase {
     
     // Maintenance Employee
     func testMaintenanceEmployeeType() {
-        let pass = passGenerator.createPass(forEntrant: EmployeeType.maintenance(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber))
+        let pass = passGenerator.createPass(forEntrant: EmployeeType.maintenance(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber)).entrantPass
         
         XCTAssertTrue(pass.hasAccess(toArea: .amusement))
         XCTAssertTrue(pass.hasAccess(toArea: .kitchen))
@@ -127,7 +127,7 @@ class AmusementParkPassGeneratorTests: XCTestCase {
     
     // Manager
     func testManagerType() {
-        let pass = passGenerator.createPass(forEntrant: ManagerType.manager(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber))
+        let pass = passGenerator.createPass(forEntrant: ManagerType.manager(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber)).entrantPass
         
         XCTAssertTrue(pass.hasAccess(toArea: .amusement))
         XCTAssertTrue(pass.hasAccess(toArea: .kitchen))
@@ -143,7 +143,7 @@ class AmusementParkPassGeneratorTests: XCTestCase {
     
     // ACME Vendor
     func testACMEVendorType() {
-        let pass = passGenerator.createPass(forEntrant: VendorType.acme(name: entrantName, birthdate: entrantBirthdate, visitdate: entrantVisitdate))
+        let pass = passGenerator.createPass(forEntrant: VendorType.acme(name: entrantName, birthdate: entrantBirthdate, visitdate: entrantVisitdate)).entrantPass
         XCTAssertFalse(pass.hasAccess(toArea: .amusement))
         XCTAssertTrue(pass.hasAccess(toArea: .kitchen))
         XCTAssertFalse(pass.hasAccess(toArea: .maintenance))
@@ -157,7 +157,7 @@ class AmusementParkPassGeneratorTests: XCTestCase {
     
     // Fedex Vendor
     func testFedexVendorType() {
-        let pass = passGenerator.createPass(forEntrant: VendorType.fedex(name: entrantName, birthdate: entrantBirthdate, visitdate: entrantVisitdate))
+        let pass = passGenerator.createPass(forEntrant: VendorType.fedex(name: entrantName, birthdate: entrantBirthdate, visitdate: entrantVisitdate)).entrantPass
         XCTAssertFalse(pass.hasAccess(toArea: .amusement))
         XCTAssertFalse(pass.hasAccess(toArea: .kitchen))
         XCTAssertTrue(pass.hasAccess(toArea: .maintenance))
@@ -171,7 +171,7 @@ class AmusementParkPassGeneratorTests: XCTestCase {
     
     // Orkin Vendor
     func testOrkinVendorType() {
-        let pass = passGenerator.createPass(forEntrant: VendorType.orkin(name: entrantName, birthdate: entrantBirthdate, visitdate: entrantVisitdate))
+        let pass = passGenerator.createPass(forEntrant: VendorType.orkin(name: entrantName, birthdate: entrantBirthdate, visitdate: entrantVisitdate)).entrantPass
         XCTAssertTrue(pass.hasAccess(toArea: .amusement))
         XCTAssertTrue(pass.hasAccess(toArea: .kitchen))
         XCTAssertFalse(pass.hasAccess(toArea: .maintenance))
@@ -185,7 +185,7 @@ class AmusementParkPassGeneratorTests: XCTestCase {
     
     // NWElectrical Vendor
     func testNWElectricalVendorType() {
-        let pass = passGenerator.createPass(forEntrant: VendorType.nwElectrical(name: entrantName, birthdate: entrantBirthdate, visitdate: entrantVisitdate))
+        let pass = passGenerator.createPass(forEntrant: VendorType.nwElectrical(name: entrantName, birthdate: entrantBirthdate, visitdate: entrantVisitdate)).entrantPass
         XCTAssertTrue(pass.hasAccess(toArea: .amusement))
         XCTAssertTrue(pass.hasAccess(toArea: .kitchen))
         XCTAssertTrue(pass.hasAccess(toArea: .maintenance))
@@ -199,7 +199,7 @@ class AmusementParkPassGeneratorTests: XCTestCase {
     
     // Contractor
     func test1001ContractorType() {
-        let pass = passGenerator.createPass(forEntrant: ContractorType.oneZeroZeroOne(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber))
+        let pass = passGenerator.createPass(forEntrant: ContractorType.oneZeroZeroOne(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber)).entrantPass
         XCTAssertTrue(pass.hasAccess(toArea: .amusement))
         XCTAssertTrue(pass.hasAccess(toArea: .kitchen))
         XCTAssertFalse(pass.hasAccess(toArea: .maintenance))
@@ -212,7 +212,7 @@ class AmusementParkPassGeneratorTests: XCTestCase {
     }
     
     func test1002ContractorType() {
-        let pass = passGenerator.createPass(forEntrant: ContractorType.oneZeroZeroTwo(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber))
+        let pass = passGenerator.createPass(forEntrant: ContractorType.oneZeroZeroTwo(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber)).entrantPass
         XCTAssertTrue(pass.hasAccess(toArea: .amusement))
         XCTAssertFalse(pass.hasAccess(toArea: .kitchen))
         XCTAssertTrue(pass.hasAccess(toArea: .maintenance))
@@ -225,7 +225,7 @@ class AmusementParkPassGeneratorTests: XCTestCase {
     }
     
     func test1003ContractorType() {
-        let pass = passGenerator.createPass(forEntrant: ContractorType.oneZeroZeroThree(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber))
+        let pass = passGenerator.createPass(forEntrant: ContractorType.oneZeroZeroThree(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber)).entrantPass
         XCTAssertTrue(pass.hasAccess(toArea: .amusement))
         XCTAssertTrue(pass.hasAccess(toArea: .kitchen))
         XCTAssertTrue(pass.hasAccess(toArea: .maintenance))
@@ -238,7 +238,7 @@ class AmusementParkPassGeneratorTests: XCTestCase {
     }
     
     func test2001ContractorType() {
-        let pass = passGenerator.createPass(forEntrant: ContractorType.twoZeroZeroOne(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber))
+        let pass = passGenerator.createPass(forEntrant: ContractorType.twoZeroZeroOne(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber)).entrantPass
         XCTAssertFalse(pass.hasAccess(toArea: .amusement))
         XCTAssertFalse(pass.hasAccess(toArea: .kitchen))
         XCTAssertFalse(pass.hasAccess(toArea: .maintenance))
@@ -251,7 +251,7 @@ class AmusementParkPassGeneratorTests: XCTestCase {
     }
     
     func test2002ContractorType() {
-        let pass = passGenerator.createPass(forEntrant: ContractorType.twoZeroZeroTwo(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber))
+        let pass = passGenerator.createPass(forEntrant: ContractorType.twoZeroZeroTwo(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber)).entrantPass
         XCTAssertFalse(pass.hasAccess(toArea: .amusement))
         XCTAssertTrue(pass.hasAccess(toArea: .kitchen))
         XCTAssertTrue(pass.hasAccess(toArea: .maintenance))

@@ -33,7 +33,7 @@ extension AgeVerifiable {
         // Current Date
         let today = Date()
         
-        guard let birthdate = dateFormatter.date(from: dateString) else {
+        guard let birthdate = Date.getDateFromString(stringDate: dateString) else {
             throw PassError.invalidDateFormat(message: "Please enter date in format \"MM/dd/yyyy\"")
         }
         

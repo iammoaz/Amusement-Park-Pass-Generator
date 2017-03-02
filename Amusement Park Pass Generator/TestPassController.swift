@@ -33,6 +33,13 @@ class TestPassController: UIViewController {
         configureViewFor(pass)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        guard let pass = pass else { return }
+        passReader.displayBirthdayMessage(forPass: pass, controller: self)
+    }
+    
     func configureViewFor(_ pass: Passable) {
         if let name = pass.entrant.name {
             nameLabel.text = "\(name.firstName!) \(name.lastName!)"

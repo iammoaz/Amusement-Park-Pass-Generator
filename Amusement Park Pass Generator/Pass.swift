@@ -18,7 +18,6 @@ protocol Passable {
     var accessAreas: [AccessArea] { get }
     var addressDetails: String { get }
     func hasAccess(toArea area: AccessArea) -> Bool
-//    func hasAccess(toDiscount for: DiscountType) -> Bool
 }
 
 enum PassError: Error {

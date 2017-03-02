@@ -6,7 +6,7 @@
 //  Copyright © 2017 Muhammad Moaz. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 typealias AccessMessage = String
 
@@ -20,6 +20,7 @@ protocol PassReadable {
 }
 
 struct PassReader: PassReadable {
+    
     static let instance = PassReader()
     let soundManager = SoundManager()
     
@@ -141,7 +142,6 @@ extension PassReader {
             message = "skip lines for rides"
         }
         
-        displayBirthdayMessage(forPass: pass)
         playSound(hasAccess)
         
         lastPassID = pass.passID
@@ -162,10 +162,11 @@ extension PassReader {
     }
     
     // Display Birthday Message and Call Alert
-    private func displayBirthdayMessage(forPass pass: Passable) {
-        let birthDayMessage = birthdayAlert(forPass: pass)
-        if !birthDayMessage.isEmpty {
-            print(birthDayMessage)
+    func displayBirthdayMessage(forPass pass: Passable, controller: UIViewController) {
+        let message = birthdayAlert(forPass: pass)
+        if !message.isEmpty {
+            print(message)
+            Theme.displayAlert(title: "It's your Birthday!", message: message, viewController: controller)
         }
     }
     

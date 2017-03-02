@@ -42,12 +42,18 @@
 		413142011E4FA0860003C4C0 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413141C61E4E677A0003C4C0 /* SoundManager.swift */; };
 		413142031E5051BB0003C4C0 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413142021E5051BB0003C4C0 /* Date.swift */; };
 		413142051E5072650003C4C0 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413142021E5051BB0003C4C0 /* Date.swift */; };
+		413FA2D71E60A72F001573BA /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413FA2D61E60A72F001573BA /* InputField.swift */; };
+		414A72121E64B32800A5EAFD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414A72111E64B32800A5EAFD /* Data.swift */; };
 		416C8D4D1E5AE731006BA0B2 /* CreatePassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416C8D4C1E5AE731006BA0B2 /* CreatePassController.swift */; };
 		416C8D4F1E5AE740006BA0B2 /* TestPassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416C8D4E1E5AE740006BA0B2 /* TestPassController.swift */; };
+		416C8D511E5B1202006BA0B2 /* VendorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416C8D501E5B1202006BA0B2 /* VendorType.swift */; };
+		416C8D531E5B1212006BA0B2 /* ContractorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416C8D521E5B1212006BA0B2 /* ContractorType.swift */; };
 		4192AB291E563F0900BC061F /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192AB281E563F0900BC061F /* ThemeButton.swift */; };
 		4192AB2C1E564F1200BC061F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192AB2B1E564F1200BC061F /* Theme.swift */; };
 		419E48841E59A3D40046785C /* ThemeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419E48831E59A3D40046785C /* ThemeTextField.swift */; };
 		419E48861E59C06C0046785C /* ThemeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419E48851E59C06C0046785C /* ThemeInputView.swift */; };
+		41B91FD51E5E1FB90098C68A /* VendorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416C8D501E5B1202006BA0B2 /* VendorType.swift */; };
+		41B91FD61E5E1FBD0098C68A /* ContractorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416C8D521E5B1212006BA0B2 /* ContractorType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,8 +92,12 @@
 		413141E61E4F92050003C4C0 /* AmusementParkPassGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmusementParkPassGeneratorTests.swift; sourceTree = "<group>"; };
 		413141E81E4F92050003C4C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		413142021E5051BB0003C4C0 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		413FA2D61E60A72F001573BA /* InputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
+		414A72111E64B32800A5EAFD /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		416C8D4C1E5AE731006BA0B2 /* CreatePassController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePassController.swift; sourceTree = "<group>"; };
 		416C8D4E1E5AE740006BA0B2 /* TestPassController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPassController.swift; sourceTree = "<group>"; };
+		416C8D501E5B1202006BA0B2 /* VendorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorType.swift; sourceTree = "<group>"; };
+		416C8D521E5B1212006BA0B2 /* ContractorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractorType.swift; sourceTree = "<group>"; };
 		4192AB281E563F0900BC061F /* ThemeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeButton.swift; sourceTree = "<group>"; };
 		4192AB2B1E564F1200BC061F /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		419E48831E59A3D40046785C /* ThemeTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeTextField.swift; sourceTree = "<group>"; };
@@ -167,6 +177,8 @@
 		413141AE1E4E3B090003C4C0 /* Helper Methods */ = {
 			isa = PBXGroup;
 			children = (
+				414A72101E64B31900A5EAFD /* Data */,
+				413FA2D51E60A71A001573BA /* InputFields */,
 				413142041E5051C00003C4C0 /* Date */,
 				413141C51E4E67650003C4C0 /* Sound */,
 			);
@@ -224,6 +236,8 @@
 				413141BC1E4E4F5A0003C4C0 /* EmployeeType.swift */,
 				413141C11E4E645F0003C4C0 /* GuestType.swift */,
 				413141C31E4E662F0003C4C0 /* ManagerType.swift */,
+				416C8D501E5B1202006BA0B2 /* VendorType.swift */,
+				416C8D521E5B1212006BA0B2 /* ContractorType.swift */,
 			);
 			name = "Entrant Types";
 			sourceTree = "<group>";
@@ -280,6 +294,22 @@
 				413142021E5051BB0003C4C0 /* Date.swift */,
 			);
 			name = Date;
+			sourceTree = "<group>";
+		};
+		413FA2D51E60A71A001573BA /* InputFields */ = {
+			isa = PBXGroup;
+			children = (
+				413FA2D61E60A72F001573BA /* InputField.swift */,
+			);
+			name = InputFields;
+			sourceTree = "<group>";
+		};
+		414A72101E64B31900A5EAFD /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				414A72111E64B32800A5EAFD /* Data.swift */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 		4192AB261E563EDB00BC061F /* Theme */ = {
@@ -419,7 +449,10 @@
 				413141D31E4F54460003C4C0 /* PassReader.swift in Sources */,
 				419E48841E59A3D40046785C /* ThemeTextField.swift in Sources */,
 				413141C01E4E61F40003C4C0 /* EntrantDetails.swift in Sources */,
+				413FA2D71E60A72F001573BA /* InputField.swift in Sources */,
+				416C8D511E5B1202006BA0B2 /* VendorType.swift in Sources */,
 				413141BD1E4E4F5A0003C4C0 /* EmployeeType.swift in Sources */,
+				414A72121E64B32800A5EAFD /* Data.swift in Sources */,
 				416C8D4D1E5AE731006BA0B2 /* CreatePassController.swift in Sources */,
 				416C8D4F1E5AE740006BA0B2 /* TestPassController.swift in Sources */,
 				413141B61E4E3F1B0003C4C0 /* AccessArea.swift in Sources */,
@@ -434,6 +467,7 @@
 				413142031E5051BB0003C4C0 /* Date.swift in Sources */,
 				4131419B1E4E39C10003C4C0 /* AppDelegate.swift in Sources */,
 				4192AB291E563F0900BC061F /* ThemeButton.swift in Sources */,
+				416C8D531E5B1212006BA0B2 /* ContractorType.swift in Sources */,
 				413141D51E4F54520003C4C0 /* PassGenerator.swift in Sources */,
 				413141D71E4F545C0003C4C0 /* Pass.swift in Sources */,
 				413141C71E4E677A0003C4C0 /* SoundManager.swift in Sources */,
@@ -455,7 +489,9 @@
 				413141F01E4FA0290003C4C0 /* AccessArea.swift in Sources */,
 				413141E71E4F92050003C4C0 /* AmusementParkPassGeneratorTests.swift in Sources */,
 				413141F41E4FA02D0003C4C0 /* EmployeeType.swift in Sources */,
+				41B91FD51E5E1FB90098C68A /* VendorType.swift in Sources */,
 				413141FE1E4FA0350003C4C0 /* PassGenerator.swift in Sources */,
+				41B91FD61E5E1FBD0098C68A /* ContractorType.swift in Sources */,
 				413141FF1E4FA0350003C4C0 /* Pass.swift in Sources */,
 				413141F61E4FA02D0003C4C0 /* ManagerType.swift in Sources */,
 				413142011E4FA0860003C4C0 /* SoundManager.swift in Sources */,

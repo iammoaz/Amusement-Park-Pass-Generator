@@ -8,38 +8,82 @@
 
 import Foundation
 
-protocol Contactable {
-    var contactInformation: EntrantDetails? { get }
+protocol Nameable {
+    var name: EntrantName? { get }
 }
 
-struct EntrantDetails {
+protocol Addressable {
+    var address: EntrantAddress { get }
+}
+
+protocol BirthDateable {
+    var birthdate: EntrantBirthdate { get }
+}
+
+protocol VisitDateable {
+    var visitdate: EntrantVisitDate { get }
+}
+
+protocol Securable {
+    var socialSecurityNumber: EntrantSocialSecurityNumber { get }
+}
+
+struct EntrantName {
     fileprivate (set) var firstName: String?
     fileprivate (set) var lastName: String?
-    fileprivate (set) var streetAddress: String?
+    
+    init(firstName: String?, lastName: String?) {
+        self.firstName = firstName
+        self.lastName = lastName
+    }
+}
+
+struct EntrantAddress {
+    fileprivate (set) var street: String?
     fileprivate (set) var city: String?
     fileprivate (set) var state: String?
     fileprivate (set) var zipCode: String?
     
-    init(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: String?) {
-        self.firstName = firstName
-        self.lastName = lastName
-        self.streetAddress = streetAddress
+    init(street: String?, city: String?, state: String?, zipCode: String?) {
+        self.street = street
         self.city = city
         self.state = state
         self.zipCode = zipCode
     }
 }
 
-// Returns Contact Details
-extension Contactable {
-    var contactDetails: String {
-        let firstName = contactInformation!.firstName
-        let lastName = contactInformation!.lastName
-        let streetAddress = contactInformation!.streetAddress
-        let city = contactInformation!.city
-        let state = contactInformation!.state
-        let zipCode = contactInformation!.zipCode
+struct EntrantBirthdate {
+    fileprivate (set) var dateOfBirth: Birthdate
+    
+    init(dateOfBirth: Birthdate) {
+        self.dateOfBirth = dateOfBirth
+    }
+}
+
+struct EntrantVisitDate {
+    fileprivate (set) var dateOfVisit: String?
+    
+    init(dateOfVisit: String?) {
+        self.dateOfVisit = dateOfVisit
+    }
+}
+
+struct EntrantSocialSecurityNumber {
+    fileprivate (set) var socialSecurityNumber: String?
+    
+    init(socialSecurityNumber: String?) {
+        self.socialSecurityNumber = socialSecurityNumber
+    }
+}
+
+// Returns Address Details
+extension Addressable {
+    var addressDetails: String {
+        let street = address.street
+        let city = address.city
+        let state = address.state
+        let zipCode = address.zipCode
         
-        return "\(firstName) \(lastName) lives at \(streetAddress) in \(city) of \(state), \(zipCode)"
+        return "\(street) in \(city) of \(state), \(zipCode)"
     }
 }

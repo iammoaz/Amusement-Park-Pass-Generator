@@ -8,7 +8,20 @@
 
 import Foundation
 
+typealias SubType = String
+
+enum EntrantType: String {
+    case Guest
+    case Vendor
+    case Employee
+    case Contractor
+    case Manager
+}
+
+
 protocol Entrant {
+    var name: EntrantName? { get }
+    var subType: SubType { get }
     var accessAreas: [AccessArea] { get }
     var rideAccess: (allRides: Bool, skipsQueues: Bool) { get }
     var discounts: (food: Percentage, merchandise: Percentage) { get }

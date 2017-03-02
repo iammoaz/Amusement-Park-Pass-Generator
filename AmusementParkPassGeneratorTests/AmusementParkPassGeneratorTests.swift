@@ -12,7 +12,11 @@ class AmusementParkPassGeneratorTests: XCTestCase {
     
     let passGenerator = AccessPassGenerator.instance
     let passReader = PassReader.instance
-    let entrantDetails = EntrantDetails(firstName: "Muhammad", lastName: "Moaz", streetAddress: "86", city: "Khaitan", state: "FL", zipCode: "83001")
+    let entrantName = EntrantName(firstName: "Muhammad", lastName: "Moaz")
+    let entrantAddress = EntrantAddress(streetAddress: "86", city: "Khaitan", state: "FL", zipCode: "83001")
+    let entrantBirthdate = EntrantBirthdate(dateOfBirth: "29-11-1991")
+    let entrantVisitdate = EntrantVisitDate(dateOfVisit: "21-02-2017")
+    let entrantSocialSecurityNumber = EntrantSocialSecurityNumber(socialSecurityNumber: "00000000000")
     
     override func setUp() {
         super.setUp()
@@ -26,38 +30,38 @@ class AmusementParkPassGeneratorTests: XCTestCase {
     
     // Classic Guest
     func testClassicGuestType() {
-        let guestPass = passGenerator.createPass(forEntrant: GuestType.classic)
-        XCTAssertTrue(guestPass.hasAccess(toArea: .amusement))
-        XCTAssertFalse(guestPass.hasAccess(toArea: .kitchen))
-        XCTAssertFalse(guestPass.hasAccess(toArea: .maintenance))
-        XCTAssertFalse(guestPass.hasAccess(toArea: .office))
-        XCTAssertFalse(guestPass.hasAccess(toArea: .rideControl))
-        XCTAssertTrue(guestPass.allRideAccess)
-        XCTAssertFalse(guestPass.skipsQueues)
-        XCTAssertEqual(guestPass.foodDiscount, 0)
-        XCTAssertEqual(guestPass.merchandiseDiscount, 0)
+        let pass = passGenerator.createPass(forEntrant: GuestType.classic)
+        XCTAssertTrue(pass.hasAccess(toArea: .amusement))
+        XCTAssertFalse(pass.hasAccess(toArea: .kitchen))
+        XCTAssertFalse(pass.hasAccess(toArea: .maintenance))
+        XCTAssertFalse(pass.hasAccess(toArea: .office))
+        XCTAssertFalse(pass.hasAccess(toArea: .rideControl))
+        XCTAssertTrue(pass.allRideAccess)
+        XCTAssertFalse(pass.skipsQueues)
+        XCTAssertEqual(pass.foodDiscount, 0)
+        XCTAssertEqual(pass.merchandiseDiscount, 0)
     }
     
     // Vip Guest
     func testVipGuestType() {
-        let vipPass = passGenerator.createPass(forEntrant: GuestType.vip)
-        XCTAssertTrue(vipPass.hasAccess(toArea: .amusement))
-        XCTAssertFalse(vipPass.hasAccess(toArea: .kitchen))
-        XCTAssertFalse(vipPass.hasAccess(toArea: .maintenance))
-        XCTAssertFalse(vipPass.hasAccess(toArea: .office))
-        XCTAssertFalse(vipPass.hasAccess(toArea: .rideControl))
-        XCTAssertTrue(vipPass.allRideAccess)
-        XCTAssertTrue(vipPass.skipsQueues)
-        XCTAssertEqual(vipPass.foodDiscount, 10)
-        XCTAssertEqual(vipPass.merchandiseDiscount, 20)
-        XCTAssertNil(vipPass.contactInfo)
+        let pass = passGenerator.createPass(forEntrant: GuestType.vip)
+        XCTAssertTrue(pass.hasAccess(toArea: .amusement))
+        XCTAssertFalse(pass.hasAccess(toArea: .kitchen))
+        XCTAssertFalse(pass.hasAccess(toArea: .maintenance))
+        XCTAssertFalse(pass.hasAccess(toArea: .office))
+        XCTAssertFalse(pass.hasAccess(toArea: .rideControl))
+        XCTAssertTrue(pass.allRideAccess)
+        XCTAssertTrue(pass.skipsQueues)
+        XCTAssertEqual(pass.foodDiscount, 10)
+        XCTAssertEqual(pass.merchandiseDiscount, 20)
+        XCTAssertNil(pass.address)
     }
     
     // Child Guest
     func testChildGuestType() {
         // Date Format: yyyy-mm-dd
-        let birthday = "2012-11-29"
-        let childPass = passGenerator.createPass(forEntrant: GuestType.child(birthdate: birthday))
+        let birthdate = EntrantBirthdate(dateOfBirth: "2012-11-29")
+        let childPass = passGenerator.createPass(forEntrant: GuestType.child(birthdate: birthdate))
         XCTAssertTrue(childPass.hasAccess(toArea: .amusement))
         XCTAssertFalse(childPass.hasAccess(toArea: .kitchen))
         XCTAssertFalse(childPass.hasAccess(toArea: .maintenance))
@@ -67,68 +71,196 @@ class AmusementParkPassGeneratorTests: XCTestCase {
         XCTAssertFalse(childPass.skipsQueues)
         XCTAssertEqual(childPass.foodDiscount, 0)
         XCTAssertEqual(childPass.merchandiseDiscount, 0)
-        XCTAssertNil(childPass.contactInfo)
-        XCTAssertTrue(try! childPass.birthdate(dateString: birthday, meetsRequirement: 5))
+        XCTAssertNil(childPass.address)
+        XCTAssertTrue(try! childPass.birthdate(dateString: birthdate.dateOfBirth, meetsRequirement: 5))
     }
     
     // Food Services
     func testFoodServicesEmployeeType() {
-        let employeePass = passGenerator.createPass(forEntrant: EmployeeType.foodServices(entrantDetails))
-        XCTAssertTrue(employeePass.hasAccess(toArea: .amusement))
-        XCTAssertTrue(employeePass.hasAccess(toArea: .kitchen))
-        XCTAssertFalse(employeePass.hasAccess(toArea: .maintenance))
-        XCTAssertFalse(employeePass.hasAccess(toArea: .office))
-        XCTAssertFalse(employeePass.hasAccess(toArea: .rideControl))
-        XCTAssertTrue(employeePass.allRideAccess)
-        XCTAssertTrue(employeePass.skipsQueues)
-        XCTAssertEqual(employeePass.foodDiscount, 15)
-        XCTAssertEqual(employeePass.merchandiseDiscount, 25)
-        XCTAssertNotNil(employeePass.contactInfo)
+        let pass = passGenerator.createPass(forEntrant: EmployeeType.foodServices(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber))
+        
+        
+        XCTAssertTrue(pass.hasAccess(toArea: .amusement))
+        XCTAssertTrue(pass.hasAccess(toArea: .kitchen))
+        XCTAssertFalse(pass.hasAccess(toArea: .maintenance))
+        XCTAssertFalse(pass.hasAccess(toArea: .office))
+        XCTAssertFalse(pass.hasAccess(toArea: .rideControl))
+        XCTAssertTrue(pass.allRideAccess)
+        XCTAssertTrue(pass.skipsQueues)
+        XCTAssertEqual(pass.foodDiscount, 15)
+        XCTAssertEqual(pass.merchandiseDiscount, 25)
+        XCTAssertNotNil(pass.address)
     }
     
     // Ride Services
     func testRideServicesEmployeeType() {
-        let employeePass = passGenerator.createPass(forEntrant: EmployeeType.rideServices(entrantDetails))
-        XCTAssertTrue(employeePass.hasAccess(toArea: .amusement))
-        XCTAssertFalse(employeePass.hasAccess(toArea: .kitchen))
-        XCTAssertFalse(employeePass.hasAccess(toArea: .maintenance))
-        XCTAssertFalse(employeePass.hasAccess(toArea: .office))
-        XCTAssertTrue(employeePass.hasAccess(toArea: .rideControl))
-        XCTAssertTrue(employeePass.allRideAccess)
-        XCTAssertTrue(employeePass.skipsQueues)
-        XCTAssertEqual(employeePass.foodDiscount, 15)
-        XCTAssertEqual(employeePass.merchandiseDiscount, 25)
-        XCTAssertNotNil(employeePass.contactInfo)
+        let pass = passGenerator.createPass(forEntrant: EmployeeType.rideServices(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber))
+        
+        
+        XCTAssertTrue(pass.hasAccess(toArea: .amusement))
+        XCTAssertFalse(pass.hasAccess(toArea: .kitchen))
+        XCTAssertFalse(pass.hasAccess(toArea: .maintenance))
+        XCTAssertFalse(pass.hasAccess(toArea: .office))
+        XCTAssertTrue(pass.hasAccess(toArea: .rideControl))
+        XCTAssertTrue(pass.allRideAccess)
+        XCTAssertTrue(pass.skipsQueues)
+        XCTAssertEqual(pass.foodDiscount, 15)
+        XCTAssertEqual(pass.merchandiseDiscount, 25)
+        XCTAssertNotNil(pass.address)
     }
     
     // Maintenance Employee
     func testMaintenanceEmployeeType() {
-        let employeePass = passGenerator.createPass(forEntrant: EmployeeType.maintenance(entrantDetails))
-        XCTAssertTrue(employeePass.hasAccess(toArea: .amusement))
-        XCTAssertTrue(employeePass.hasAccess(toArea: .kitchen))
-        XCTAssertTrue(employeePass.hasAccess(toArea: .maintenance))
-        XCTAssertFalse(employeePass.hasAccess(toArea: .office))
-        XCTAssertTrue(employeePass.hasAccess(toArea: .rideControl))
-        XCTAssertTrue(employeePass.allRideAccess)
-        XCTAssertTrue(employeePass.skipsQueues)
-        XCTAssertEqual(employeePass.foodDiscount, 15)
-        XCTAssertEqual(employeePass.merchandiseDiscount, 25)
-        XCTAssertNotNil(employeePass.contactInfo)
+        let pass = passGenerator.createPass(forEntrant: EmployeeType.maintenance(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber))
+        
+        XCTAssertTrue(pass.hasAccess(toArea: .amusement))
+        XCTAssertTrue(pass.hasAccess(toArea: .kitchen))
+        XCTAssertTrue(pass.hasAccess(toArea: .maintenance))
+        XCTAssertFalse(pass.hasAccess(toArea: .office))
+        XCTAssertTrue(pass.hasAccess(toArea: .rideControl))
+        XCTAssertTrue(pass.allRideAccess)
+        XCTAssertTrue(pass.skipsQueues)
+        XCTAssertEqual(pass.foodDiscount, 15)
+        XCTAssertEqual(pass.merchandiseDiscount, 25)
+        XCTAssertNotNil(pass.address)
     }
     
     // Manager
     func testManagerType() {
-        let managerPass = passGenerator.createPass(forEntrant: ManagerType.manager(entrantDetails))
-        XCTAssertTrue(managerPass.hasAccess(toArea: .amusement))
-        XCTAssertTrue(managerPass.hasAccess(toArea: .kitchen))
-        XCTAssertTrue(managerPass.hasAccess(toArea: .maintenance))
-        XCTAssertTrue(managerPass.hasAccess(toArea: .office))
-        XCTAssertTrue(managerPass.hasAccess(toArea: .rideControl))
-        XCTAssertTrue(managerPass.allRideAccess)
-        XCTAssertTrue(managerPass.skipsQueues)
-        XCTAssertEqual(managerPass.foodDiscount, 25)
-        XCTAssertEqual(managerPass.merchandiseDiscount, 25)
-        XCTAssertNotNil(managerPass.contactInfo)
+        let pass = passGenerator.createPass(forEntrant: ManagerType.manager(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber))
+        
+        XCTAssertTrue(pass.hasAccess(toArea: .amusement))
+        XCTAssertTrue(pass.hasAccess(toArea: .kitchen))
+        XCTAssertTrue(pass.hasAccess(toArea: .maintenance))
+        XCTAssertTrue(pass.hasAccess(toArea: .office))
+        XCTAssertTrue(pass.hasAccess(toArea: .rideControl))
+        XCTAssertTrue(pass.allRideAccess)
+        XCTAssertTrue(pass.skipsQueues)
+        XCTAssertEqual(pass.foodDiscount, 25)
+        XCTAssertEqual(pass.merchandiseDiscount, 25)
+        XCTAssertNotNil(pass.address)
+    }
+    
+    // ACME Vendor
+    func testACMEVendorType() {
+        let pass = passGenerator.createPass(forEntrant: VendorType.acme(name: entrantName, birthdate: entrantBirthdate, visitdate: entrantVisitdate))
+        XCTAssertFalse(pass.hasAccess(toArea: .amusement))
+        XCTAssertTrue(pass.hasAccess(toArea: .kitchen))
+        XCTAssertFalse(pass.hasAccess(toArea: .maintenance))
+        XCTAssertFalse(pass.hasAccess(toArea: .office))
+        XCTAssertFalse(pass.hasAccess(toArea: .rideControl))
+        XCTAssertFalse(pass.allRideAccess)
+        XCTAssertFalse(pass.skipsQueues)
+        XCTAssertEqual(pass.foodDiscount, 0)
+        XCTAssertEqual(pass.merchandiseDiscount, 0)
+    }
+    
+    // Fedex Vendor
+    func testFedexVendorType() {
+        let pass = passGenerator.createPass(forEntrant: VendorType.fedex(name: entrantName, birthdate: entrantBirthdate, visitdate: entrantVisitdate))
+        XCTAssertFalse(pass.hasAccess(toArea: .amusement))
+        XCTAssertFalse(pass.hasAccess(toArea: .kitchen))
+        XCTAssertTrue(pass.hasAccess(toArea: .maintenance))
+        XCTAssertTrue(pass.hasAccess(toArea: .office))
+        XCTAssertFalse(pass.hasAccess(toArea: .rideControl))
+        XCTAssertFalse(pass.allRideAccess)
+        XCTAssertFalse(pass.skipsQueues)
+        XCTAssertEqual(pass.foodDiscount, 0)
+        XCTAssertEqual(pass.merchandiseDiscount, 0)
+    }
+    
+    // Orkin Vendor
+    func testOrkinVendorType() {
+        let pass = passGenerator.createPass(forEntrant: VendorType.orkin(name: entrantName, birthdate: entrantBirthdate, visitdate: entrantVisitdate))
+        XCTAssertTrue(pass.hasAccess(toArea: .amusement))
+        XCTAssertTrue(pass.hasAccess(toArea: .kitchen))
+        XCTAssertFalse(pass.hasAccess(toArea: .maintenance))
+        XCTAssertFalse(pass.hasAccess(toArea: .office))
+        XCTAssertTrue(pass.hasAccess(toArea: .rideControl))
+        XCTAssertFalse(pass.allRideAccess)
+        XCTAssertFalse(pass.skipsQueues)
+        XCTAssertEqual(pass.foodDiscount, 0)
+        XCTAssertEqual(pass.merchandiseDiscount, 0)
+    }
+    
+    // NWElectrical Vendor
+    func testNWElectricalVendorType() {
+        let pass = passGenerator.createPass(forEntrant: VendorType.nwElectrical(name: entrantName, birthdate: entrantBirthdate, visitdate: entrantVisitdate))
+        XCTAssertTrue(pass.hasAccess(toArea: .amusement))
+        XCTAssertTrue(pass.hasAccess(toArea: .kitchen))
+        XCTAssertTrue(pass.hasAccess(toArea: .maintenance))
+        XCTAssertTrue(pass.hasAccess(toArea: .office))
+        XCTAssertTrue(pass.hasAccess(toArea: .rideControl))
+        XCTAssertFalse(pass.allRideAccess)
+        XCTAssertFalse(pass.skipsQueues)
+        XCTAssertEqual(pass.foodDiscount, 0)
+        XCTAssertEqual(pass.merchandiseDiscount, 0)
+    }
+    
+    // Contractor
+    func test1001ContractorType() {
+        let pass = passGenerator.createPass(forEntrant: ContractorType.oneZeroZeroOne(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber))
+        XCTAssertTrue(pass.hasAccess(toArea: .amusement))
+        XCTAssertTrue(pass.hasAccess(toArea: .kitchen))
+        XCTAssertFalse(pass.hasAccess(toArea: .maintenance))
+        XCTAssertFalse(pass.hasAccess(toArea: .office))
+        XCTAssertTrue(pass.hasAccess(toArea: .rideControl))
+        XCTAssertFalse(pass.allRideAccess)
+        XCTAssertFalse(pass.skipsQueues)
+        XCTAssertEqual(pass.foodDiscount, 0)
+        XCTAssertEqual(pass.merchandiseDiscount, 0)
+    }
+    
+    func test1002ContractorType() {
+        let pass = passGenerator.createPass(forEntrant: ContractorType.oneZeroZeroTwo(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber))
+        XCTAssertTrue(pass.hasAccess(toArea: .amusement))
+        XCTAssertFalse(pass.hasAccess(toArea: .kitchen))
+        XCTAssertTrue(pass.hasAccess(toArea: .maintenance))
+        XCTAssertFalse(pass.hasAccess(toArea: .office))
+        XCTAssertTrue(pass.hasAccess(toArea: .rideControl))
+        XCTAssertFalse(pass.allRideAccess)
+        XCTAssertFalse(pass.skipsQueues)
+        XCTAssertEqual(pass.foodDiscount, 0)
+        XCTAssertEqual(pass.merchandiseDiscount, 0)
+    }
+    
+    func test1003ContractorType() {
+        let pass = passGenerator.createPass(forEntrant: ContractorType.oneZeroZeroThree(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber))
+        XCTAssertTrue(pass.hasAccess(toArea: .amusement))
+        XCTAssertTrue(pass.hasAccess(toArea: .kitchen))
+        XCTAssertTrue(pass.hasAccess(toArea: .maintenance))
+        XCTAssertTrue(pass.hasAccess(toArea: .office))
+        XCTAssertTrue(pass.hasAccess(toArea: .rideControl))
+        XCTAssertFalse(pass.allRideAccess)
+        XCTAssertFalse(pass.skipsQueues)
+        XCTAssertEqual(pass.foodDiscount, 0)
+        XCTAssertEqual(pass.merchandiseDiscount, 0)
+    }
+    
+    func test2001ContractorType() {
+        let pass = passGenerator.createPass(forEntrant: ContractorType.twoZeroZeroOne(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber))
+        XCTAssertFalse(pass.hasAccess(toArea: .amusement))
+        XCTAssertFalse(pass.hasAccess(toArea: .kitchen))
+        XCTAssertFalse(pass.hasAccess(toArea: .maintenance))
+        XCTAssertTrue(pass.hasAccess(toArea: .office))
+        XCTAssertFalse(pass.hasAccess(toArea: .rideControl))
+        XCTAssertFalse(pass.allRideAccess)
+        XCTAssertFalse(pass.skipsQueues)
+        XCTAssertEqual(pass.foodDiscount, 0)
+        XCTAssertEqual(pass.merchandiseDiscount, 0)
+    }
+    
+    func test2002ContractorType() {
+        let pass = passGenerator.createPass(forEntrant: ContractorType.twoZeroZeroTwo(name: entrantName, address: entrantAddress, birthdate: entrantBirthdate, socialSecurityNumber: entrantSocialSecurityNumber))
+        XCTAssertFalse(pass.hasAccess(toArea: .amusement))
+        XCTAssertTrue(pass.hasAccess(toArea: .kitchen))
+        XCTAssertTrue(pass.hasAccess(toArea: .maintenance))
+        XCTAssertFalse(pass.hasAccess(toArea: .office))
+        XCTAssertFalse(pass.hasAccess(toArea: .rideControl))
+        XCTAssertFalse(pass.allRideAccess)
+        XCTAssertFalse(pass.skipsQueues)
+        XCTAssertEqual(pass.foodDiscount, 0)
+        XCTAssertEqual(pass.merchandiseDiscount, 0)
     }
     
     // Sound

@@ -248,7 +248,6 @@ class CreatePassController: UIViewController {
     }
     
     
-    
     func populateData() {
         let fields = activeInputFields.map { $0.value }
         for field in fields {
@@ -292,6 +291,7 @@ class CreatePassController: UIViewController {
     
     @IBAction func selectEntrantType(_ sender: UIButton) {
         setColorsForButtons(inStack: entrantTypeStackView, selectedButton: sender)
+        disableTextFields()
         if let entrantType = EntrantType(rawValue: sender.currentTitle!) {
             selectedEntrantType = entrantType
             setSubTypes(forType: entrantType)

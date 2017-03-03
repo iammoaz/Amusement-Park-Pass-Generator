@@ -205,15 +205,42 @@ class CreatePassController: UIViewController {
         }
         
         if let dateOfBirth = fields.filter({ $0.tag == 102 }).map({ $0.text }).first {
-            self.entrantDateOfBirth = EntrantBirthdate(dateOfBirth: dateOfBirth!)
+            if let dateOfBirth = dateOfBirth {
+                guard (Date.getDateFromString(stringDate: dateOfBirth) != nil) else {
+                    Theme.displayAlert(title: "Invalid Entry", message: "The date format seems to be invalid. Please enter date in MM/DD/YYYY format.", viewController: self)
+                    return
+                }
+                
+                self.entrantDateOfBirth = EntrantBirthdate(dateOfBirth: dateOfBirth)
+            }
         }
         
         if let socialSecurityNumber = fields.filter({ $0.tag == 103 }).map({ $0.text }).first {
             self.entrantSocialSecurityNumber = EntrantSocialSecurityNumber(socialSecurityNumber: socialSecurityNumber)
         }
         
+        if let companyName = fields.filter({ $0.tag == 104 }).map({ $0.text }).first {
+            if companyName != selectedSubType {
+                Theme.displayAlert(title: "Invalid Entry", message: "The compnay does not match with the selected type", viewController: self)
+            }
+        }
+        
+        if let projectNumber = fields.filter({ $0.tag == 105 }).map({ $0.text }).first {
+            if projectNumber != selectedSubType {
+                Theme.displayAlert(title: "Invalid Entry", message: "The project number does not match with the selected type", viewController: self)
+            }
+        }
+        
         if let dateOfVisit = fields.filter({ $0.tag == 106 }).map({ $0.text }).first {
-            self.entrantDateOfVisit = EntrantVisitDate(dateOfVisit: dateOfVisit)
+            if let dateOfVisit = dateOfVisit {
+                guard (Date.getDateFromString(stringDate: dateOfVisit) != nil) else {
+                    Theme.displayAlert(title: "Invalid Entry", message: "The date format seems to be invalid. Please enter date in MM/DD/YYYY format.", viewController: self)
+                    return
+                }
+                
+                
+                self.entrantDateOfVisit = EntrantVisitDate(dateOfVisit: dateOfVisit)
+            }
         }
         
         if let street = fields.filter({ $0.tag == 107 }).map({ $0.text }).first, let city = fields.filter({ $0.tag == 108 }).map({ $0.text }).first, let state = fields.filter({ $0.tag == 109 }).map({ $0.text }).first, let zipCode = fields.filter({ $0.tag == 110 }).map({ $0.text }).first {

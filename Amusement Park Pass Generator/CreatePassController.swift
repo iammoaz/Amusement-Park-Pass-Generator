@@ -53,9 +53,11 @@ class CreatePassController: UIViewController {
         super.viewDidLoad()
         
         setSubTypes(forType: .Guest)
-//        toggle(buttons: [generatePassButton, populateDataButton], on: false)
         let guestButton = entrantTypeStackView.subviews.first as! UIButton
+        let classicButton = entrantSubTypeStackView.subviews.first as! UIButton
+        
         setColorsForButtons(inStack: entrantTypeStackView, selectedButton: guestButton)
+        setColorsForButtons(inStack: entrantSubTypeStackView, selectedButton: classicButton)
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
@@ -151,6 +153,9 @@ class CreatePassController: UIViewController {
             entrantSubTypeStackView.addArrangedSubview(button)
             button.addTarget(self, action: #selector(CreatePassController.enableFieldsForSubType(_:)), for: .touchUpInside)
         }
+        
+        let firstSubType = entrantSubTypeStackView.subviews.first as! UIButton
+        enableFieldsForSubType(firstSubType)
     }
     
     func setColorsForButtons(inStack stackview: UIStackView, selectedButton: UIButton) {
@@ -201,7 +206,12 @@ class CreatePassController: UIViewController {
         let fields = activeInputFields.map { $0.value }
         
         if let firstName = fields.filter({ $0.tag == 100 }).map({ $0.text }).first, let lastName = fields.filter({ $0.tag == 101 }).map({ $0.text }).first {
-            self.entrantName = EntrantName(firstName: firstName, lastName: lastName)
+            
+            if let firstName = firstName, let lastName = lastName {
+                self.entrantName = EntrantName(firstName: firstName, lastName: lastName)
+            } else {
+                Theme.displayAlert(title: "Invalid Entry", message: "Name fields cannot be empty", viewController: self)
+            }
         }
         
         if let dateOfBirth = fields.filter({ $0.tag == 102 }).map({ $0.text }).first {
@@ -329,7 +339,6 @@ class CreatePassController: UIViewController {
         if (activeInputFields.filter({ $0.value.text == "" })).count >= 1 {
             Theme.displayAlert(title: "Invalid Input", message: "One or more input fields are empty", viewController: self)
         }
-        
         getDataFromInputFields()
     }
     
